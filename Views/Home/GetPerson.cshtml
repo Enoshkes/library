@@ -1,0 +1,10 @@
+﻿@model library.ViewModel.PersonVM;
+
+@if(Model.ErrorMessage != null)
+{
+    <h1>@Model.ErrorMessage</h1>
+} else
+{
+    <h1>@Model.Name @Model.Age</h1>
+
+}

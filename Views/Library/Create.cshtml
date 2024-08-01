@@ -1,0 +1,22 @@
+﻿@using (Html.BeginForm("Create", "Library", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    ;
+    <input type="text" name="genre" />
+    <button type="submit" class="btn btn-promary">Save</button>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var modelState in ViewData.ModelState.Values)
+                {
+                    @foreach (var error in modelState.Errors)
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                }
+            </ul>
+        </div>
+    }
+}
+
