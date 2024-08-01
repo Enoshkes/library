@@ -15,6 +15,8 @@ namespace library
             builder.Services.AddDbContext<ApplicationDbContext>();
 
             builder.Services.AddScoped<ILibraryService, LibraryService>();
+            builder.Services.AddScoped<IShelvesService, ShelvesService>();
+
 
             var app = builder.Build();
 

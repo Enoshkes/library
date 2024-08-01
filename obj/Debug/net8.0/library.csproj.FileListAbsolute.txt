@@ -250,3 +250,4 @@ C:\Users\enosh.tsur\source\repos\library\library\bin\Debug\net8.0\runtimes\win\l
 C:\Users\enosh.tsur\source\repos\library\library\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\enosh.tsur\source\repos\library\library\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\enosh.tsur\source\repos\library\library\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\enosh.tsur\source\repos\library\library\obj\Debug\net8.0\library.sourcelink.json

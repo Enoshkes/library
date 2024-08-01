@@ -1,6 +1,7 @@
 ﻿
 using library.Data;
 using library.Models;
+using library.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace library.Service
@@ -30,6 +31,25 @@ namespace library.Service
             await _context.Libraries.AddAsync(library);
             await _context.SaveChangesAsync();
             return library;
+        }
+
+        public async Task<Library> EditLibrary(long libraryId, LibraryVM libraryVM)
+        {
+            var libraryToUpdate = await _context.Libraries
+                .FindAsync(libraryId);
+
+            if (libraryToUpdate == null)
+            {
+                throw new Exception("Library not found...");
+            }
+            libraryToUpdate.Genre = libraryVM.Genre;
+            await  _context.SaveChangesAsync();
+            return libraryToUpdate;
+        }
+
+        public async Task<Library?> FindById(long libraryId)
+        {
+            return await _context.Libraries.FindAsync(libraryId);
         }
 
         public async Task<List<Library>> GetAllLibraries() => 

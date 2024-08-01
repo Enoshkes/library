@@ -1,4 +1,6 @@
-﻿using library.Service;
+﻿using library.Models;
+using library.Service;
+using library.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace library.Controllers
@@ -10,6 +12,10 @@ namespace library.Controllers
         public LibraryController(ILibraryService libraryService)
         {
             _libraryService = libraryService;
+            IEnumerable<Shelf> shelves = [
+                new () { LibraryId = 1, Height = 9, Width = 78 }
+            ];
+            var a = shelves.Select(x => x.LibraryId).FirstOrDefault();
         }
         public async Task<IActionResult> Index() => 
             View(await _libraryService.GetAllLibraries());
@@ -18,6 +24,18 @@ namespace library.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Edit(long libraryId)
+        {
+            Library? byId = await _libraryService.FindById(libraryId);
+
+            if (byId == null) {  return RedirectToAction("Index"); }
+
+            ViewBag.LibraryId = libraryId;
+
+            return View(new LibraryVM());
+
         }
 
         [HttpPost]
